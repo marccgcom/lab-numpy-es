@@ -100,7 +100,7 @@ print(f"{d_min} - {d_mean} - {d_max}")
 #15. Ahora queremos etiquetar los valores en d. Primero crea un array vacío "f" con la misma forma (es decir, 2x3x5) que d usando `np.empty`.
 
 #[tu código aquí]
-f = np.empty(d.shape)
+f = np.empty_like(d)
 
 print("f:")
 print(f)
@@ -116,6 +116,12 @@ Nota: no necesitas usar Numpy en esta pregunta.
 """
 
 #[tu código aquí]
+# Aplica las condiciones para llenar f
+f[(d == d_min)] = 0
+f[(d == d_max)] = 100
+f[(d > d_mean) & (d < d_max)] = 75
+f[(d == d_mean)] = 50
+f[(d > d_min) & (d < d_mean)] = 25
 
 
 
@@ -142,7 +148,10 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
 """
 
 #[tu código aquí]
-
+print("d")
+print(d)
+print("f")
+print(f)
 
 
 """
@@ -159,3 +168,13 @@ De nuevo, no necesitas Numpy en esta pregunta.
 """
 
 #[tu código aquí]
+f = np.empty_like(d, dtype=str)
+
+f[(d == d_min)] = 'A'
+f[(d == d_max)] = 'E'
+f[(d > d_mean) & (d < d_max)] = 'D'
+f[(d == d_mean)] = 'C'
+f[(d > d_min) & (d < d_mean)] = 'B'
+
+print("digits")
+print(f)
